@@ -1,0 +1,8 @@
+[package]
+name = "text-editor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dioxus = { version = "0.5.1", features = ["macro", "hooks"] }
+freya = "0.2.2"
