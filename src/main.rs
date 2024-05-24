@@ -5,8 +5,6 @@ fn main() {
     launch_cfg(
         app,
         LaunchConfig::<()>::builder()
-            .with_width(900.0)
-            .with_height(500.0)
             .with_decorations(true)
             .with_transparency(false)
             .with_title("Editor")
@@ -57,7 +55,7 @@ fn Body() -> Element {
                     width: "100%".into(),
                 }),
                 length: editor.len_lines(),
-                item_size: 35.0,
+                item_size: 20.0,
                 scroll_with_arrows: false,
                 cache_elements: false,
                 builder: move |line_index, _: &Option<()>| {
@@ -94,7 +92,7 @@ fn Body() -> Element {
                         rect {
                             key: "{line_index}",
                             width: "100%",
-                            height: "35",
+                            height: "20",
                             direction: "horizontal",
                             background: "{line_background}",
                             rect {
@@ -103,7 +101,7 @@ fn Body() -> Element {
                                 main_align: "center",
                                 direction: "horizontal",
                                 label {
-                                    font_size: "15",
+                                    font_size: "17",
                                     color: "rgb(200, 200, 200)",
                                     "{line_index + 1} "
                                 }
@@ -121,7 +119,7 @@ fn Body() -> Element {
                                 highlights: highlights,
                                 text {
                                     color: "rgb(240, 240, 240)",
-                                    font_size: "15",
+                                    font_size: "18",
                                     "{line}"
                                 }
                             }
