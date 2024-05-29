@@ -1,6 +1,13 @@
 use freya::events::MouseEvent;
 use freya::prelude::*;
 
+use lazy_static::lazy_static;
+use parking_lot::Mutex;
+
+lazy_static! {
+    static ref TEXT: Mutex<String> = Mutex::new(String::from(""));
+}
+
 fn main() {
     launch_cfg(
         app,
@@ -8,6 +15,8 @@ fn main() {
             .with_decorations(true)
             .with_transparency(false)
             .with_title("Editor")
+            .with_width(1920.0)
+            .with_height(1080.0)
             .build(),
     );
 }
@@ -36,9 +45,8 @@ fn Body() -> Element {
     let onkeydown = move |e: KeyboardEvent| {
         editable.process_event(&EditableEvent::KeyDown(e.data));
     };
-    for i in editor.lines() {
-        println!("{}", i)
-    }
+    let mut text = TEXT.lock();
+    *text = (*editor).to_string();
 
     rsx!(
         rect {

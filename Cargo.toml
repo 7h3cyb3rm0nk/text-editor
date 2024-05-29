@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 dioxus = { version = "0.5.1", features = ["macro", "hooks"] }
 freya = "0.2.2"
+lazy_static = "1.4.0"
+parking_lot = "0.12.3"
